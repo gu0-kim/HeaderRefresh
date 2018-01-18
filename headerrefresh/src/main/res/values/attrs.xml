@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HeaderRefreshRecyclerView">
+        <!--<attr name="has_header" format="boolean"/>-->
+        <!--<attr name="header_layout_id" format="reference"/>-->
+    </declare-styleable>
+
+    <declare-styleable name="RefreshLayout">
+        <attr name="fixable_layout" format="reference"/>
+        <attr name="pull_distance_rate" format="float"/>
+        <attr name="header_refresh_rate" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="ProgressArrowFrameLayout">
+        <attr name="frameProgressColor" format="color"/>
+        <attr name="frameRingWidth" format="dimension"/>
+        <attr name="frameRingMax" format="integer"/>
+        <attr name="frameRingImage" format="reference"/>
+    </declare-styleable>
+</resources>

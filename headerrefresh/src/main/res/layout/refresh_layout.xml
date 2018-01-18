@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/refresh_def_bg_color"
+    android:gravity="center_horizontal|bottom"
+    android:orientation="vertical">
+    <!-->-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/uik_list_logo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <com.developergu.headerrefresh.header.defaultype.ProgressArrowFrameLayout
+            android:id="@+id/ptr_arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:frameProgressColor="#999"
+            app:frameRingImage="@drawable/jiantou"
+            app:frameRingWidth="1dp"
+            />
+
+        <TextView
+            android:id="@+id/ptr_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="下拉刷新"
+            android:textColor="#999"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</LinearLayout>

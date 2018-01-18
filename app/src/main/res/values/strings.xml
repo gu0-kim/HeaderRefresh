@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CustomHeaderRefreshRecyclerViewMaster</string>
+    <string name="menu_refresh_start">刷新</string>
+    <string name="menu_refreshing">刷新中</string>
+    <string name="try_scan">扫一扫</string>
+    <string name="payment">付钱</string>
+    <string name="transfer">收钱</string>
+    <string name="card_bag">卡包</string>
+    <string name="hot_movie">热门电影</string>
+    <string name="des">des</string>
+    <string name="str_d1">转账</string>
+    <string name="str_d2">信用卡还款</string>
+    <string name="str_d3">充值中心</string>
+    <string name="str_d4">余额宝</string>
+    <string name="str_d5">电影票</string>
+    <string name="str_d6">滴滴出行</string>
+    <string name="str_d7">城市服务</string>
+    <string name="str_d8">芝麻信用</string>
+    <string name="str_d9">火车票机票</string>
+    <string name="str_d10">花呗</string>
+    <string name="str_d11">饿了么外卖</string>
+    <string name="str_d12">更多</string>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context="com.example.developgergu.customheaderrefreshrecyclerviewmaster.MainActivity">
+
+
+    <include layout="@layout/toolbar_below_btn_layout"/>
+
+    <com.developergu.headerrefresh.HeaderRefreshRecyclerView
+        android:id="@+id/header_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <include layout="@layout/toolbar_fold_state_layout"/>
+
+        <include layout="@layout/toolbar_open_state_layout"/>
+    </android.support.v7.widget.Toolbar>
+</FrameLayout>

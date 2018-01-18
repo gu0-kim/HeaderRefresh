@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fold_layout"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize">
+
+    <ImageButton
+        android:id="@+id/top_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/toolbar_action_margin"
+        android:layout_marginRight="@dimen/toolbar_action_margin"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/add_x48"
+        android:tint="#fff"
+        />
+
+    <ImageButton
+        android:id="@+id/top_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/toolbar_action_margin"
+        android:layout_toLeftOf="@id/top_add_btn"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/p"
+        android:tint="#fff"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/toolbar_action_margin"
+        android:layout_toLeftOf="@id/top_person"
+        android:background="@drawable/search_bg">
+
+        <com.example.developgergu.customheaderrefreshrecyclerviewmaster.widget.SquareButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorTransparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/search_x48"
+            app:dependSide="height"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/hot_movie"
+            android:textColor="@color/colorWhite"/>
+
+        <com.example.developgergu.customheaderrefreshrecyclerviewmaster.widget.SquareButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="@color/colorTransparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_keyboard_voice_white_24dp"
+            android:tint="#55ffffff"
+            app:dependSide="height"/>
+    </LinearLayout>
+</RelativeLayout>

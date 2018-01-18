@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HeaderRefresh</string>
+    <string name="STR1">下拉刷新</string>
+    <string name="STR2">释放更新</string>
+    <string name="STR3">我们正在努力加载…</string>
+
+</resources>

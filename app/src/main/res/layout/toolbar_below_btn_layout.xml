@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar_below"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/front_view_height"
+    android:background="@color/colorPrimary"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/top_scan_btn"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/img_style_bellow_toolbar"
+            android:contentDescription="@string/try_scan"
+            android:src="@drawable/notify_scan_toolbar_"/>
+
+        <TextView
+            style="@style/text_style_top"
+            android:text="@string/try_scan"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/img_style_bellow_toolbar"
+            android:contentDescription="@string/payment"
+            android:src="@drawable/notify_payment_toolbar_"/>
+
+        <TextView
+            style="@style/text_style_top"
+            android:text="@string/payment"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/img_style_bellow_toolbar"
+            android:contentDescription="@string/transfer"
+            android:src="@drawable/notify_transfer_toolbar_"/>
+
+        <TextView
+            style="@style/text_style_top"
+            android:text="@string/transfer"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/img_style_bellow_toolbar"
+            android:contentDescription="@string/card_bag"
+            android:src="@drawable/notify_card_x64"/>
+
+        <TextView
+            style="@style/text_style_top"
+            android:text="@string/card_bag"/>
+    </LinearLayout>
+</LinearLayout>
