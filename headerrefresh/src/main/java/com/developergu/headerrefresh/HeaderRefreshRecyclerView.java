@@ -208,12 +208,11 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     ViewCompat.postOnAnimation(this, mAnimController);
   }
 
-  public void refreshForceFinish() {
-    if (mAnimController.isRunning()) {
-      mAnimController.releaseAnim();
-      if (mRefreshLayout != null) {
-        mRefreshLayout.forceStop();
-      }
+  public void clearAnim() {
+    mAnimController.releaseAnim();
+    mAnimController = null;
+    if (mRefreshLayout != null) {
+      mRefreshLayout.forceStop();
     }
   }
 
@@ -335,6 +334,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     void releaseAnim() {
       //      running = false;
       if (comebackAnim != null) {
+        Log.e("TAG", "releaseAnim: &&&&&&&&&-------");
         comebackAnim.cancel();
         comebackAnim.removeAllListeners();
         comebackAnim.removeAllUpdateListeners();

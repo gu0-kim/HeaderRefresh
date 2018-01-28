@@ -137,7 +137,7 @@ public class ArcProgressView extends View {
   }
 
   public void forceStop() {
-    mRefreshingController.stop();
+    mRefreshingController.stopAndRelease();
   }
 
   class RefreshingController implements Runnable, ValueAnimator.AnimatorUpdateListener {
@@ -164,6 +164,13 @@ public class ArcProgressView extends View {
 
     void stop() {
       mAnimator.cancel();
+      setWholeStyle(false);
+    }
+
+    void stopAndRelease() {
+      mAnimator.cancel();
+      mAnimator.removeAllUpdateListeners();
+      mAnimator.removeAllListeners();
       setWholeStyle(false);
     }
 
