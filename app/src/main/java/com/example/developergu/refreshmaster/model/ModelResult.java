@@ -1,6 +1,6 @@
 package com.example.developergu.refreshmaster.model;
 
-/** Created by developgergu on 2018/1/17. */
+/** Created by developergu on 2018/1/17. */
 // 统一返回结果
 public class ModelResult<T> {
   private T data;

@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.developergu.refreshmaster.BaseFragment;
 import com.example.developergu.refreshmaster.presenter.IPresenter;
 
-/** Created by developgergu on 2018/1/16. */
+/** Created by developergu on 2018/1/16. */
 public abstract class IView<P extends IPresenter> extends BaseFragment {
   public P mPresenter;
   /** if IView is a type of Fragment,calling the method from onCreateView() */

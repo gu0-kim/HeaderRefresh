@@ -26,7 +26,7 @@ import java.util.List;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 
-/** Created by developgergu on 2018/1/17. */
+/** Created by developergu on 2018/1/17. */
 public class ZhiFuBaoIndexView
     extends HeaderCollapseView<HeaderRefreshRecyclerView, IndexPagePresenter>
     implements RefreshLayout.HeaderOffsetListener, HeaderRefreshRecyclerView.RefreshListener {

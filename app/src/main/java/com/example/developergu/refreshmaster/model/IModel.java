@@ -3,7 +3,7 @@ package com.example.developergu.refreshmaster.model;
 import io.reactivex.Observable;
 
 /*
- * Created by developgergu on 2018/1/16;
+ * Created by developergu on 2018/1/16;
  *  <T> is data Type.
  */
 public abstract class IModel<T, D> {

@@ -11,7 +11,7 @@ import com.example.developergu.refreshmaster.R;
 
 import java.util.List;
 
-/** Created by developgergu on 2017/12/20. */
+/** Created by developergu on 2017/12/20. */
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
   private Context mContext;

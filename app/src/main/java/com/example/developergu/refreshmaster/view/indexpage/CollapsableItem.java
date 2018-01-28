@@ -2,7 +2,7 @@ package com.example.developergu.refreshmaster.view.indexpage;
 
 import android.view.View;
 
-/** Created by developgergu on 2018/1/17. */
+/** Created by developergu on 2018/1/17. */
 public interface CollapsableItem<T extends View> {
 
   /**

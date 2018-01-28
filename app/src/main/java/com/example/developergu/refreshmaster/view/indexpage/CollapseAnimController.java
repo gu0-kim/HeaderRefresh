@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 
-/** Created by developgergu on 2018/1/17. */
+/** Created by developergu on 2018/1/17. */
 public class CollapseAnimController {
   private ValueAnimator mValueAnimator;
   private boolean mCollapseAnimRunning;

@@ -10,7 +10,7 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-/** Created by developgergu on 2018/1/16. */
+/** Created by developergu on 2018/1/16. */
 public abstract class IPresenter<V extends IView, T> {
   private CompositeDisposable mCompositeDisposable;
   private V view;

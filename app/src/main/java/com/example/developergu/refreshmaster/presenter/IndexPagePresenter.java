@@ -12,7 +12,7 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
-/** Created by developgergu on 2018/1/18. */
+/** Created by developergu on 2018/1/18. */
 public class IndexPagePresenter extends IPresenter<ZhiFuBaoIndexView, List<String>> {
 
   public IndexPagePresenter() {

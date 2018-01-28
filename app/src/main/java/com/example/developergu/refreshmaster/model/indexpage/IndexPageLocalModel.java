@@ -11,7 +11,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.functions.Function;
 
-/** Created by developgergu on 2018/1/16. */
+/** Created by developergu on 2018/1/16. */
 public class IndexPageLocalModel extends IModel<List<String>, List<String>> {
 
   private AnalogDelayOperation delayOp;

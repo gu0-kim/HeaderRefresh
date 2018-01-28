@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/** Created by developgergu on 2018/1/16. */
+/** Created by developergu on 2018/1/16. */
 public class IndexPageHttpModel extends IModel<List<String>, Response<List<String>>> {
 
   private static final String BASE_URL = "http://www.google.com/";

@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.developergu.refreshmaster.presenter.IPresenter;
 import com.example.developergu.refreshmaster.view.IView;
 
-/** Created by developgergu on 2018/1/17. */
+/** Created by developergu on 2018/1/17. */
 public abstract class HeaderCollapseView<V extends View, P extends IPresenter> extends IView<P>
     implements CollapsableItem<V> {
   protected CollapseAnimController mCollapseAnimController;

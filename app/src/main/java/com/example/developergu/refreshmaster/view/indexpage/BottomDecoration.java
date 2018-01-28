@@ -11,7 +11,7 @@ import android.view.View;
 import com.developergu.headerrefresh.DimensUtils;
 import com.example.developergu.refreshmaster.R;
 
-/** Created by developgergu on 2018/1/9. */
+/** Created by developergu on 2018/1/9. */
 public class BottomDecoration extends RecyclerView.ItemDecoration {
   private static final int DIVIDER = 14; // unit of dp
   private static final int FOOTER_DIVER = 60;
