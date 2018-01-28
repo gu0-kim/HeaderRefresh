@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context="com.example.developgergu.customheaderrefreshrecyclerviewmaster.MainActivity">
+    tools:context="com.example.developergu.refreshmaster.MainActivity">
 
 
     <include layout="@layout/toolbar_below_btn_layout"/>

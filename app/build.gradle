@@ -1,9 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/Users/developgergu/androidWorkDir/keystoreDir/debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.developgergu.customheaderrefreshrecyclerviewmaster"
+        applicationId "com.example.developgergu.headerrefresh.recyclerview.master"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
@@ -14,11 +22,10 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationIdSuffix '.customheaderrefresh'
+            signingConfig signingConfigs.config
         }
         debug {
             minifyEnabled false
-            applicationIdSuffix '.customheaderrefresh'
         }
     }
     productFlavors {
@@ -26,6 +33,7 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -44,4 +52,10 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile project(':headerrefresh')
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "${variant.name}-${prefix}-${variant.versionName}.apk"
+    }
 }

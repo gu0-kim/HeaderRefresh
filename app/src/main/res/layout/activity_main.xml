@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.developgergu.customheaderrefreshrecyclerviewmaster.MainActivity">
+    tools:context="com.example.developergu.refreshmaster.MainActivity">
 
     <FrameLayout
         android:id="@+id/content_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
+    </FrameLayout>
 </FrameLayout>
