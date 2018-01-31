@@ -154,7 +154,7 @@ public class ZhiFuBaoIndexView
       curScrollY = mParallaxViewHeight;
     }
     mLastCollapseScrollY = curScrollY;
-    mCollapseParallaxLayout.setTranslationY(parallaxViewTransY(curScrollY));
+    mCollapseParallaxLayout.setTranslationY(calcParallaxViewTransY(curScrollY));
     float rate = Math.abs(getCollapseRate(curScrollY));
     if (rate <= COLLAPSE_RATE_TRIGGER) {
       fold_layout.setVisibility(View.VISIBLE);
@@ -216,7 +216,7 @@ public class ZhiFuBaoIndexView
   @Override
   public void onOffsetChanged(int offset, int refreshDimen, int maxOffset) {}
 
-  private int parallaxViewTransY(int scrollY) {
+  private int calcParallaxViewTransY(int scrollY) {
     return Math.max(maxTop - (int) (scrollY * COLLAPSE_PARALLAX_MULTIPLIER), minTop);
   }
 

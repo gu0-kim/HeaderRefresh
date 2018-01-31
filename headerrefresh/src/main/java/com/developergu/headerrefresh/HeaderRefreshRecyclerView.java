@@ -97,6 +97,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     if (mRefreshLayout != null) {
       mRefreshLayout.setOffsetListener(null);
     }
+    clearOnScrollListeners();
   }
 
   private boolean forceMove;

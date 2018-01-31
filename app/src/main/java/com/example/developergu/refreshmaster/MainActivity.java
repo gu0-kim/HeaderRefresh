@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onDestroy() {
     super.onDestroy();
+    CleanLeakUtils.fixInputMethodManagerLeak(this);
     checkItem(currentFragment);
     checkItem(this);
     currentFragment = null;
