@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.developergu.refreshmaster.view.indexpage.ZhiFuBaoIndexView;
-
+//first commit here!
 public class MainActivity extends AppCompatActivity {
   ZhiFuBaoIndexView currentFragment;
   //  static MyApplication mApplication;
