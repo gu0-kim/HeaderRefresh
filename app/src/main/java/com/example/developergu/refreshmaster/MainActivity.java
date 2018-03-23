@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
   private void showNewView() {
     currentFragment = ZhiFuBaoIndexView.getInstance();
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.content_view, currentFragment);
-    transaction.commit();
+    getSupportFragmentManager()
+        .beginTransaction()
+        .replace(R.id.content_view, currentFragment)
+        .commit();
   }
 
   private ZhiFuBaoIndexView getCurrentFragment() {

@@ -163,7 +163,8 @@ public class ZhiFuBaoIndexView
       fold_layout.setVisibility(View.GONE);
       open_layout.setVisibility(View.VISIBLE);
       open_layout.setAlpha(Math.min(rate - COLLAPSE_RATE_TRIGGER + MIN_ALPHA, 1f));
-      //      front_mask_view.setAlpha(Math.min(rate - COLLAPSE_RATE_TRIGGER, 1f - MIN_ALPHA));
+      //      front_mask_view.setAlpha(Math.min(rate - COLLAPSE_RATE_TRIGGER, 1f -
+      // MIN_ALPHA));
     }
     front_mask_view.setAlpha(rate);
   }

@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath "com.jakewharton:butterknife-gradle-plugin:" + rootProject.ext.version["butterknifeSdkVersion"]
+    }
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile rootProject.ext.dependencies["junit"]
+    androidTestCompile rootProject.ext.dependencies["runner"]
+    androidTestCompile rootProject.ext.dependencies["espresso-core"]
+
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["support-v4"]
+    implementation rootProject.ext.dependencies["design"]
+    debugApi rootProject.ext.dependencies["leakcanary-android"]
+    releaseApi rootProject.ext.dependencies["leakcanary-android-no-op"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+}

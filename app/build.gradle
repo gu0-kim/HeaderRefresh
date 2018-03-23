@@ -9,13 +9,13 @@ android {
             storePassword 'android'
         }
     }
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
         applicationId "com.example.developgergu.headerrefresh.recyclerview.master"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName '1.0.0'
+        minSdkVersion rootProject.ext.android["compileSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,25 +33,30 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '27.0.3'
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile rootProject.ext.dependencies["constraint-layout"]
+    testCompile rootProject.ext.dependencies["junit"]
+    androidTestCompile rootProject.ext.dependencies["runner"]
+    androidTestCompile rootProject.ext.dependencies["espresso-core"]
+
+    compile rootProject.ext.dependencies["appcompat-v7"]
+    compile rootProject.ext.dependencies["recyclerview-v7"]
+    compile rootProject.ext.dependencies["design"]
+
+    compile rootProject.ext.dependencies["rxbinding"]
+
+    debugCompile rootProject.ext.dependencies["leakcanary-android"]
+    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
+
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["converter-gson"]
+    compile rootProject.ext.dependencies["adapter-rxjava2"]
     compile project(':headerrefresh')
+    implementation project(':mvplibrary')
 }
 
 android.applicationVariants.all { variant ->
