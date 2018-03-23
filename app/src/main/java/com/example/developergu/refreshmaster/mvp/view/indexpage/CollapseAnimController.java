@@ -1,4 +1,4 @@
-package com.example.developergu.refreshmaster.view.indexpage;
+package com.example.developergu.refreshmaster.mvp.view.indexpage;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

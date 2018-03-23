@@ -1,13 +1,10 @@
-package com.example.developergu.refreshmaster.view.indexpage;
+package com.example.developergu.refreshmaster.mvp.view.indexpage;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-
-import com.example.developergu.refreshmaster.presenter.IPresenter;
-import com.example.developergu.refreshmaster.view.IView;
 
 /** Created by developergu on 2018/1/17. */
 public abstract class HeaderCollapseView<V extends View, P extends IPresenter> extends IView<P>

@@ -1,12 +1,11 @@
 package com.example.developergu.refreshmaster;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.example.developergu.refreshmaster.view.indexpage.ZhiFuBaoIndexView;
+import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
 // first commit here!
 public class MainActivity extends AppCompatActivity {
   ZhiFuBaoIndexView currentFragment;

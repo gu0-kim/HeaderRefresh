@@ -1,4 +1,4 @@
-package com.example.developergu.refreshmaster.view.indexpage;
+package com.example.developergu.refreshmaster.mvp.view.indexpage;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import com.developergu.headerrefresh.LlayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
 import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
-import com.example.developergu.refreshmaster.presenter.IndexPagePresenter;
 import com.example.developergu.refreshmaster.utils.ScrollUtils;
 
 import java.util.ArrayList;
