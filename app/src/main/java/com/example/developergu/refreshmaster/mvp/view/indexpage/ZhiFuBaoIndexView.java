@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.test.mock.MockApplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import com.developergu.headerrefresh.LlayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
 import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
+import com.example.developergu.refreshmaster.app.MyApplication;
+import com.example.developergu.refreshmaster.di.component.DaggerActivityComponent;
+import com.example.developergu.refreshmaster.mvp.model.indexpage.IndexPagePresenter;
 import com.example.developergu.refreshmaster.utils.ScrollUtils;
 
 import java.util.ArrayList;
@@ -52,24 +56,22 @@ public class ZhiFuBaoIndexView
   }
 
   @Override
-  public void createPresenter() {
-    mPresenter = new IndexPagePresenter();
-    mPresenter.bindView(this);
-  }
-
-  @Nullable
-  @Override
-  public View onCreateView(
-      @NonNull LayoutInflater inflater,
-      @Nullable ViewGroup container,
-      @Nullable Bundle savedInstanceState) {
-    View parent = inflater.inflate(R.layout.fragmen_layout, container, false);
-    initView(getContext(), parent, inflater);
-    return parent;
+  public void injectPresenter() {
+    if (getActivity() == null) return;
+    MyApplication application = (MyApplication) getActivity().getApplication();
+    DaggerActivityComponent.builder()
+        .appComponent(application.getAppComponent())
+        .build()
+        .inject(this);
   }
 
   @Override
-  public void initView(Context context, View parent, LayoutInflater inflater) {
+  public int getLayoutId() {
+    return R.layout.fragmen_layout;
+  }
+
+  @Override
+  public void initView(View parent) {
     mToolbar = parent.findViewById(R.id.toolbar);
     fold_layout = parent.findViewById(R.id.fold_layout);
     open_layout = parent.findViewById(R.id.open_layout);
@@ -82,13 +84,14 @@ public class ZhiFuBaoIndexView
             .setPullOverRate(0.5f)
             .setOffsetListener(this)
             .setAnimVelocity(300)
-            .build(context);
-    View customHeader = inflater.inflate(R.layout.header_custom_layout, mToolbar, false);
+            .build(getContext());
+    View customHeader =
+        LayoutInflater.from(getContext()).inflate(R.layout.header_custom_layout, mToolbar, false);
     front_mask_view = customHeader.findViewById(R.id.top_front);
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
     data = new ArrayList<>();
-    mAdapter = new DataAdapter(context, data);
+    mAdapter = new DataAdapter(getContext(), data);
     mRecyclerView.setLayoutManager(new LlayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
@@ -128,7 +131,7 @@ public class ZhiFuBaoIndexView
   }
 
   @Override
-  public void clear() {
+  public void destroyView() {
     mRecyclerView.clearAnim();
     mRecyclerView.clearAllListener();
     mRecyclerView = null;
@@ -222,7 +225,7 @@ public class ZhiFuBaoIndexView
 
   @Override
   public void onRefreshStart() {
-    mPresenter.loadDataFromServer();
+    presenter.loadDataFromServer();
   }
 
   boolean suc;
@@ -235,7 +238,7 @@ public class ZhiFuBaoIndexView
       mAdapter.notifyDataSetChanged();
       mRecyclerView.invalidateItemDecorations();
     } else {
-      toastShow(getContext(), "加载失败");
+      showToast(getContext(), "加载失败");
     }
   }
 

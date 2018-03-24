@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.example.developergu.refreshmaster.app.MyApplication;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
 // first commit here!
 public class MainActivity extends AppCompatActivity {

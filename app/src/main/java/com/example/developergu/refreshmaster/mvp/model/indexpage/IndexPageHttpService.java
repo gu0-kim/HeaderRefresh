@@ -1,4 +1,4 @@
-package com.example.developergu.refreshmaster.model.indexpage;
+package com.example.developergu.refreshmaster.mvp.model.indexpage;
 
 import java.util.List;
 

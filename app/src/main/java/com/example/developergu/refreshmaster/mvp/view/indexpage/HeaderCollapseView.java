@@ -6,6 +6,9 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
+import com.gu.mvp.presenter.IPresenter;
+import com.gu.mvp.view.IView;
+
 /** Created by developergu on 2018/1/17. */
 public abstract class HeaderCollapseView<V extends View, P extends IPresenter> extends IView<P>
     implements CollapsableItem<V> {

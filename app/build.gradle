@@ -55,6 +55,11 @@ dependencies {
     compile rootProject.ext.dependencies["retrofit"]
     compile rootProject.ext.dependencies["converter-gson"]
     compile rootProject.ext.dependencies["adapter-rxjava2"]
+
+
+    implementation rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+
     compile project(':headerrefresh')
     implementation project(':mvplibrary')
 }

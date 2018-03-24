@@ -1,14 +1,17 @@
-package com.example.developergu.refreshmaster;
+package com.example.developergu.refreshmaster.app;
 
 import android.app.Application;
 import android.os.StrictMode;
 
+import com.example.developergu.refreshmaster.di.component.AppComponent;
+import com.example.developergu.refreshmaster.di.component.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
 /** Created by developergu on 2018/1/16. */
 public class MyApplication extends Application {
   private RefWatcher mRefWatcher;
+  private AppComponent mAppComponent;
 
   public RefWatcher getRefWatcher() {
     return mRefWatcher;
@@ -22,7 +25,9 @@ public class MyApplication extends Application {
       // You should not init your app in this process.
       return;
     }
+    enabledStrictMode();
     mRefWatcher = LeakCanary.install(this);
+    mAppComponent = DaggerAppComponent.builder().build();
   }
 
   private static void enabledStrictMode() {
@@ -32,5 +37,9 @@ public class MyApplication extends Application {
             .penaltyLog() //
             .penaltyDeath() //
             .build());
+  }
+
+  public AppComponent getAppComponent() {
+    return mAppComponent;
   }
 }
