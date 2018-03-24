@@ -99,6 +99,13 @@ final class HeaderAndFooterWrapper extends Adapter {
         : mInnerAdapter.getItemCount() + headerAndFooterCount();
   }
 
+  public void release() {
+    mRefreshHeaderView = null;
+    mCustomHeaderView = null;
+    mFooterView = null;
+    mInnerAdapter = null;
+  }
+
   private int headerAndFooterCount() {
     return (mHasFooter ? 1 : 0) + totalHeaderCount();
   }

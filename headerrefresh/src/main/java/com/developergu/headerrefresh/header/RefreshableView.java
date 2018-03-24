@@ -14,5 +14,5 @@ public interface RefreshableView {
 
   void reset();
 
-
+  void clear();
 }

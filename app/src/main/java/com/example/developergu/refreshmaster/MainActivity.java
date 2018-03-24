@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 
 import com.example.developergu.refreshmaster.app.MyApplication;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
+import com.gu.mvp.utils.leaks.CleanLeakUtils;
+
 // first commit here!
 public class MainActivity extends AppCompatActivity {
   ZhiFuBaoIndexView currentFragment;

@@ -111,6 +111,12 @@ public class DefaultRefreshLayout extends RefreshLayout {
     mRefreshEntityView.scrollTo(0, MAX_PULL_SIZE);
   }
 
+  @Override
+  public void clear() {
+    mState = null;
+    mProgressLayout.clear();
+  }
+
   public static class DefaultHeaderBuilder extends RefreshLayout.Builder {
     public DefaultHeaderBuilder() {
       super();

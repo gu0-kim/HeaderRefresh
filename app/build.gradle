@@ -12,7 +12,7 @@ android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
         applicationId "com.example.developgergu.headerrefresh.recyclerview.master"
-        minSdkVersion rootProject.ext.android["compileSdkVersion"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
@@ -60,6 +60,9 @@ dependencies {
     implementation rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
 
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    
     compile project(':headerrefresh')
     implementation project(':mvplibrary')
 }

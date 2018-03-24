@@ -41,9 +41,9 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
   }
 
   public interface RefreshListener {
-    void onRefreshStart();
+    void onRefreshAnimStart();
 
-    void onRefreshFinished();
+    void onRefreshAnimFinished();
   }
 
   public HeaderRefreshRecyclerView(Context context) {
@@ -202,7 +202,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     return linearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0;
   }
 
-  public void refreshFinish() {
+  public void doRefreshFinishAnim() {
     PullState currentState = mRefreshLayout.getCurrentState();
     mRefreshLayout.stopRefreshing();
     mAnimController.prepareAnim(mRefreshLayout, currentState);
@@ -217,13 +217,18 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     }
   }
 
+  public void clearHeaderView() {
+    mRefreshLayout.clear();
+    if (getAdapter() != null) ((HeaderAndFooterWrapper) getAdapter()).release();
+  }
+
   /** notify recyclerView to refresh. */
   public void doRefresh() {
     if (!refreshLayoutExistAndVisible() && mRefreshLayout != null) {
       mRefreshLayout.moveTo(mRefreshLayout.getRefreshingHeight());
       mRefreshLayout.refreshing();
       if (mRefreshListener != null) {
-        mRefreshListener.onRefreshStart();
+        mRefreshListener.onRefreshAnimStart();
       }
     }
   }
@@ -368,13 +373,13 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
       if (endState == PullState.IDLE) {
         refreshLayout.reset();
         if (startState == PullState.REFRESHING && mRefreshListener != null) {
-          mRefreshListener.onRefreshFinished();
+          mRefreshListener.onRefreshAnimFinished();
         }
         //        running = false;
       } else if (endState == PullState.REFRESHING) {
         refreshLayout.refreshing();
         if (mRefreshListener != null) {
-          mRefreshListener.onRefreshStart();
+          mRefreshListener.onRefreshAnimStart();
         }
       }
       refreshLayout = null;

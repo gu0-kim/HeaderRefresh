@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.developergu.refreshmaster.utils;
+package com.gu.mvp.utils.scroll;
 
 import android.os.Build;
 import android.view.View;

@@ -132,4 +132,8 @@ public class ProgressArrowFrameLayout extends FrameLayout {
     mRotateImageView.startAnimation(mArrowUpAnim);
     return Direction.ARROW_UP;
   }
+
+  public void clear() {
+    mDirection = null;
+  }
 }

@@ -25,6 +25,7 @@ public abstract class IView<T extends IPresenter> extends BaseFragment implement
     return presenter;
   }
 
+  @SuppressWarnings("unchecked")
   @Nullable
   @Override
   public View onCreateView(
@@ -32,6 +33,7 @@ public abstract class IView<T extends IPresenter> extends BaseFragment implement
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     injectPresenter();
+    presenter.setView(this);
     return super.onCreateView(inflater, container, savedInstanceState);
   }
 

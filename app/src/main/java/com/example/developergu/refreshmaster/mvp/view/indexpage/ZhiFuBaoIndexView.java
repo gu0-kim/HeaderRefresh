@@ -1,16 +1,11 @@
 package com.example.developergu.refreshmaster.mvp.view.indexpage;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.test.mock.MockApplication;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -21,11 +16,15 @@ import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
 import com.example.developergu.refreshmaster.app.MyApplication;
 import com.example.developergu.refreshmaster.di.component.DaggerActivityComponent;
-import com.example.developergu.refreshmaster.mvp.model.indexpage.IndexPagePresenter;
-import com.example.developergu.refreshmaster.utils.ScrollUtils;
+import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
+import com.gu.mvp.utils.scroll.ScrollUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 
@@ -33,11 +32,23 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 public class ZhiFuBaoIndexView
     extends HeaderCollapseView<HeaderRefreshRecyclerView, IndexPagePresenter>
     implements RefreshLayout.HeaderOffsetListener, HeaderRefreshRecyclerView.RefreshListener {
-  private Toolbar mToolbar;
-  private RelativeLayout fold_layout, open_layout;
-  private LinearLayout mCollapseParallaxLayout;
+
+  @BindView(R.id.toolbar)
+  Toolbar mToolbar;
+
+  @BindView(R.id.fold_layout)
+  RelativeLayout fold_layout;
+
+  @BindView(R.id.open_layout)
+  RelativeLayout open_layout;
+
+  @BindView(R.id.toolbar_below)
+  LinearLayout mCollapseParallaxLayout;
+
+  @BindView(R.id.header_rv)
+  HeaderRefreshRecyclerView mRecyclerView;
+
   private LinearLayout front_mask_view;
-  private HeaderRefreshRecyclerView mRecyclerView;
   private DataAdapter mAdapter;
   private List<String> data;
 
@@ -49,6 +60,8 @@ public class ZhiFuBaoIndexView
   private static final float COLLAPSE_RATE_TRIGGER = 0.2f; // 折叠到40%开始切换toolbar
   private static final float MIN_ALPHA = 0.3f;
   private static final String TAG = ZhiFuBaoIndexView.class.getName();
+
+  private Unbinder mUnbinder;
 
   @NonNull
   public static ZhiFuBaoIndexView getInstance() {
@@ -72,11 +85,7 @@ public class ZhiFuBaoIndexView
 
   @Override
   public void initView(View parent) {
-    mToolbar = parent.findViewById(R.id.toolbar);
-    fold_layout = parent.findViewById(R.id.fold_layout);
-    open_layout = parent.findViewById(R.id.open_layout);
-    mRecyclerView = parent.findViewById(R.id.header_rv);
-    mCollapseParallaxLayout = parent.findViewById(R.id.toolbar_below);
+    mUnbinder = ButterKnife.bind(this, parent);
     RefreshLayout refreshLayout =
         new DefaultRefreshLayout.DefaultHeaderBuilder()
             //            .setRefreshFixableLayoutId(R.layout.header_btn_layout)
@@ -134,12 +143,14 @@ public class ZhiFuBaoIndexView
   public void destroyView() {
     mRecyclerView.clearAnim();
     mRecyclerView.clearAllListener();
+    mRecyclerView.clearHeaderView();
     mRecyclerView = null;
     mAdapter.clear();
     if (temp != null) {
       temp.clear();
       temp = null;
     }
+    mUnbinder.unbind();
   }
 
   @Override
@@ -224,14 +235,14 @@ public class ZhiFuBaoIndexView
   }
 
   @Override
-  public void onRefreshStart() {
+  public void onRefreshAnimStart() {
     presenter.loadDataFromServer();
   }
 
   boolean suc;
 
   @Override
-  public void onRefreshFinished() {
+  public void onRefreshAnimFinished() {
     // 动画结束后，更新数据
     if (suc) {
       data.addAll(temp);
@@ -240,6 +251,7 @@ public class ZhiFuBaoIndexView
     } else {
       showToast(getContext(), "加载失败");
     }
+    if (temp != null) temp.clear();
   }
 
   List<String> temp;
@@ -247,13 +259,12 @@ public class ZhiFuBaoIndexView
   public void notifyLoadSuccess(List<String> list) {
     // 执行结束动画
     suc = true;
-    if (temp != null) temp.clear();
     temp = list;
-    mRecyclerView.refreshFinish();
+    mRecyclerView.doRefreshFinishAnim();
   }
 
   public void notifyLoadFail() {
     suc = false;
-    mRecyclerView.refreshFinish();
+    mRecyclerView.doRefreshFinishAnim();
   }
 }

@@ -9,5 +9,5 @@ import dagger.Component;
 @CustomScope
 @Component(modules = CustomModule.class, dependencies = AppComponent.class)
 public interface ActivityComponent {
-  public void inject(ZhiFuBaoIndexView view);
+  void inject(ZhiFuBaoIndexView view);
 }
