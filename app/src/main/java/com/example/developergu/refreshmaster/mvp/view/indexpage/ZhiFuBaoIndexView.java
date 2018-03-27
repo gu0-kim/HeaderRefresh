@@ -151,6 +151,7 @@ public class ZhiFuBaoIndexView
       temp = null;
     }
     mUnbinder.unbind();
+    mUnbinder = null;
   }
 
   @Override
