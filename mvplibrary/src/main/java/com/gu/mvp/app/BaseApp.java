@@ -24,7 +24,7 @@ public abstract class BaseApp<T> extends Application {
       // You should not init your app in this process.
       return;
     }
-    enabledStrictMode();
+//    enabledStrictMode();
     mRefWatcher = LeakCanary.install(this);
     mAppComponent = createComponent();
   }

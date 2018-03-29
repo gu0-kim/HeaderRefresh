@@ -50,7 +50,6 @@ public class ZhiFuBaoIndexView
 
   private LinearLayout front_mask_view;
   private DataAdapter mAdapter;
-  private List<String> data;
 
   private int mParallaxViewHeight, mToolbarHeight;
   private int minTop, maxTop;
@@ -99,8 +98,7 @@ public class ZhiFuBaoIndexView
     front_mask_view = customHeader.findViewById(R.id.top_front);
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
-    data = new ArrayList<>();
-    mAdapter = new DataAdapter(getContext(), data);
+    mAdapter = new DataAdapter(getContext());
     mRecyclerView.setLayoutManager(new LlayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
@@ -145,7 +143,7 @@ public class ZhiFuBaoIndexView
     mRecyclerView.clearAllListener();
     mRecyclerView.clearHeaderView();
     mRecyclerView = null;
-    mAdapter.clear();
+    mAdapter.clearAll();
     if (temp != null) {
       temp.clear();
       temp = null;
@@ -246,7 +244,7 @@ public class ZhiFuBaoIndexView
   public void onRefreshAnimFinished() {
     // 动画结束后，更新数据
     if (suc) {
-      data.addAll(temp);
+      mAdapter.add(temp);
       mAdapter.notifyDataSetChanged();
       mRecyclerView.invalidateItemDecorations();
     } else {

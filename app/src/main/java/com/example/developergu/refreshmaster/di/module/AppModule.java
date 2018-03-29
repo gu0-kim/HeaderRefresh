@@ -12,7 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 @Module
 public class AppModule {
-  private static final String BASE_URL = "http://www.google.com";
+  private static final String BASE_URL = "http://192.168.10.180:8080/";
   private static final int TIMEOUT = 3000;
 
   @Provides

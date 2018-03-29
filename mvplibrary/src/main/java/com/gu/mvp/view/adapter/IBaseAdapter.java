@@ -36,14 +36,30 @@ public abstract class IBaseAdapter<T, VH extends RecyclerView.ViewHolder>
     return data.get(pos);
   }
 
+  /**
+   * clear old data and put new data into the list
+   *
+   * @param list the data to be added
+   */
   public void addAll(List<T> list) {
     if (data == null || list == null) return;
     if (!data.isEmpty()) data.clear();
     data.addAll(list);
   }
 
+  /**
+   * not clear old
+   *
+   * @param list the data to be added
+   */
+  public void add(List<T> list) {
+    if (data == null || list == null) return;
+    data.addAll(list);
+  }
+
   public void clearAll() {
     if (data != null && !data.isEmpty()) data.clear();
     mItemClickListener = null;
+    data = null;
   }
 }

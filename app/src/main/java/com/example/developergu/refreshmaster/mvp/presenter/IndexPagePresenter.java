@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
@@ -31,12 +32,20 @@ public class IndexPagePresenter extends IPresenter<ZhiFuBaoIndexView> {
         mModel
             .getData()
             .subscribeOn(Schedulers.io())
+            .map(
+                new Function<ResponseBody, String>() {
+                  @Override
+                  public String apply(ResponseBody responseBody) throws Exception {
+                    Log.e(TAG, "IN MAP FUNCTION!------");
+                    return responseBody.string();
+                  }
+                })
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                new Consumer<ResponseBody>() {
+                new Consumer<String>() {
                   @Override
-                  public void accept(ResponseBody responseBody) throws Exception {
-                    String res = responseBody.string();
+                  public void accept(String res) throws Exception {
+                    Log.e(TAG, "$$$$$$$$$$$$$$$$$$: res=" + res);
                     List<String> list = new ArrayList<>();
                     for (int i = 0; i < 10; i++) {
                       list.add(String.valueOf(i));
@@ -48,7 +57,7 @@ public class IndexPagePresenter extends IPresenter<ZhiFuBaoIndexView> {
                 new Consumer<Throwable>() {
                   @Override
                   public void accept(Throwable throwable) throws Exception {
-                    Log.e(TAG, "accept: " + throwable.getMessage());
+                    throwable.printStackTrace();
                     List<String> list = new ArrayList<>();
                     for (int i = 0; i < 10; i++) {
                       list.add(String.valueOf(i));
