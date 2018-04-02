@@ -95,11 +95,11 @@ public abstract class BaseFragment extends Fragment implements IFragment {
     return "";
   }
 
-//  public int getIntByKey(String key) {
-//    Bundle data = getArguments();
-//    if (data != null) return data.getInt(key);
-//    return -1;
-//  }
+  //  public int getIntByKey(String key) {
+  //    Bundle data = getArguments();
+  //    if (data != null) return data.getInt(key);
+  //    return -1;
+  //  }
 
   public long getLongByKey(String key) {
     Bundle data = getArguments();
@@ -113,12 +113,12 @@ public abstract class BaseFragment extends Fragment implements IFragment {
     data.putLong(key, value);
   }
 
-//  public void saveIntByKey(String key, int value) {
-//    Log.e("tag", "saveIntByKey: key=" + value);
-//    Bundle data = getArguments();
-//    if (data == null) return;
-//    data.putInt(key, value);
-//  }
+  //  public void saveIntByKey(String key, int value) {
+  //    Log.e("tag", "saveIntByKey: key=" + value);
+  //    Bundle data = getArguments();
+  //    if (data == null) return;
+  //    data.putInt(key, value);
+  //  }
 
   public void saveStringByKey(String key, String value) {
     Log.e("tag", "saveStringByKey: key=" + value);

@@ -20,5 +20,4 @@ public interface IFragment {
   void destroyView();
 
   void showToast(Context context, String toast);
-
 }

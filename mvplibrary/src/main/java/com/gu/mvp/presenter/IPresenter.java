@@ -15,7 +15,6 @@ public abstract class IPresenter<T extends IFragment> {
     initRx();
   }
 
-
   public void setView(T view) {
     this.view = view;
   }

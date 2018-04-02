@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar_below"
     android:layout_width="match_parent"
     android:layout_height="@dimen/front_view_height"
@@ -19,11 +18,11 @@
         <ImageView
             style="@style/img_style_bellow_toolbar"
             android:contentDescription="@string/try_scan"
-            android:src="@drawable/notify_scan_toolbar_"/>
+            android:src="@drawable/notify_scan_toolbar_" />
 
         <TextView
             style="@style/text_style_top"
-            android:text="@string/try_scan"/>
+            android:text="@string/try_scan" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,11 +35,11 @@
         <ImageView
             style="@style/img_style_bellow_toolbar"
             android:contentDescription="@string/payment"
-            android:src="@drawable/notify_payment_toolbar_"/>
+            android:src="@drawable/notify_payment_toolbar_" />
 
         <TextView
             style="@style/text_style_top"
-            android:text="@string/payment"/>
+            android:text="@string/payment" />
     </LinearLayout>
 
 
@@ -54,11 +53,11 @@
         <ImageView
             style="@style/img_style_bellow_toolbar"
             android:contentDescription="@string/transfer"
-            android:src="@drawable/notify_transfer_toolbar_"/>
+            android:src="@drawable/notify_transfer_toolbar_" />
 
         <TextView
             style="@style/text_style_top"
-            android:text="@string/transfer"/>
+            android:text="@string/transfer" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,10 +70,10 @@
         <ImageView
             style="@style/img_style_bellow_toolbar"
             android:contentDescription="@string/card_bag"
-            android:src="@drawable/notify_card_x64"/>
+            android:src="@drawable/notify_card_x64" />
 
         <TextView
             style="@style/text_style_top"
-            android:text="@string/card_bag"/>
+            android:text="@string/card_bag" />
     </LinearLayout>
 </LinearLayout>

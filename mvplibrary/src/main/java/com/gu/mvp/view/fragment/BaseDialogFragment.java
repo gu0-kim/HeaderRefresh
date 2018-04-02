@@ -104,11 +104,11 @@ public abstract class BaseDialogFragment extends DialogFragment implements IFrag
     return "";
   }
 
-//  public int getIntByKey(String key) {
-//    Bundle data = getArguments();
-//    if (data != null) return data.getInt(key);
-//    return -1;
-//  }
+  //  public int getIntByKey(String key) {
+  //    Bundle data = getArguments();
+  //    if (data != null) return data.getInt(key);
+  //    return -1;
+  //  }
 
   public long getLongByKey(String key) {
     Bundle data = getArguments();
@@ -122,11 +122,11 @@ public abstract class BaseDialogFragment extends DialogFragment implements IFrag
     data.putLong(key, value);
   }
 
-//  public void saveIntByKey(String key, int value) {
-//    Bundle data = getArguments();
-//    if (data == null) return;
-//    data.putInt(key, value);
-//  }
+  //  public void saveIntByKey(String key, int value) {
+  //    Bundle data = getArguments();
+  //    if (data == null) return;
+  //    data.putInt(key, value);
+  //  }
 
   public void saveStringByKey(String key, String value) {
     Bundle data = getArguments();

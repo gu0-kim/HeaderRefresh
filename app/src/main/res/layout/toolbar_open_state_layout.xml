@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/open_layout"
     android:layout_width="match_parent"
@@ -17,8 +16,7 @@
         android:layout_marginRight="@dimen/toolbar_action_margin_double"
         android:background="@color/colorPrimary"
         android:src="@drawable/notify_scan_toolbar_"
-        android:tint="#fff"
-        />
+        android:tint="#fff" />
 
     <ImageButton
         android:id="@+id/toolbar_payment_btn"
@@ -29,8 +27,7 @@
         android:layout_toRightOf="@+id/toolbar_scan_btn"
         android:background="@color/colorPrimary"
         android:src="@drawable/notify_payment_toolbar_"
-        android:tint="#fff"
-        />
+        android:tint="#fff" />
 
     <ImageButton
         android:id="@+id/toolbar_transfer"
@@ -41,8 +38,7 @@
         android:layout_toRightOf="@id/toolbar_payment_btn"
         android:background="@color/colorPrimary"
         android:src="@drawable/notify_transfer_toolbar_"
-        android:tint="#fff"
-        />
+        android:tint="#fff" />
 
     <ImageButton
         android:id="@+id/toolbar_search_btn"
@@ -52,8 +48,7 @@
         android:layout_toRightOf="@id/toolbar_transfer"
         android:background="@color/colorPrimary"
         android:src="@drawable/actionbar_search_toolbar_"
-        android:tint="#fff"
-        />
+        android:tint="#fff" />
 
     <ImageButton
         android:id="@+id/toolbar_add_btn"
@@ -65,6 +60,5 @@
         android:layout_marginRight="@dimen/toolbar_action_margin"
         android:background="@color/colorPrimary"
         android:src="@drawable/add_x64"
-        android:tint="#fff"
-        />
+        android:tint="#fff" />
 </RelativeLayout>

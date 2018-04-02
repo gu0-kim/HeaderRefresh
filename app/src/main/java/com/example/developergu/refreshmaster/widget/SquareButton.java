@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 
 import com.example.developergu.refreshmaster.R;
 
-
 /** Created by developgergu on 2017/12/18. */
 public class SquareButton extends AppCompatImageButton {
   // 可配置size：按高度、按宽度
