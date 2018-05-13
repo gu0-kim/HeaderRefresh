@@ -2,6 +2,7 @@ package com.example.developergu.refreshmaster.di.module;
 
 import com.example.developergu.refreshmaster.mvp.model.IndexPageModel;
 import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
+import com.example.developergu.refreshmaster.mvp.presenter.SimplePresenter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +38,6 @@ public class AppModule {
         .build();
   }
 
-
   @Provides
   IndexPagePresenter getIndexPagePresenter(IndexPageModel model) {
     return new IndexPagePresenter(model);
@@ -46,5 +46,10 @@ public class AppModule {
   @Provides
   IndexPageModel getIndexPageModel(Retrofit retrofit) {
     return new IndexPageModel(retrofit);
+  }
+
+  @Provides
+  SimplePresenter getSimplePresenter() {
+    return new SimplePresenter();
   }
 }

@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.example.developergu.refreshmaster.MainActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name="com.example.developergu.refreshmaster.SimpleDemoActivity"
             android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

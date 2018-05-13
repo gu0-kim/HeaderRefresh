@@ -30,7 +30,7 @@ public class BottomDecoration extends RecyclerView.ItemDecoration {
     this(context, -1);
   }
 
-  BottomDecoration(Context context, int noDividerPos) {
+  public BottomDecoration(Context context, int noDividerPos) {
     super();
     mNoDividerPos = noDividerPos;
     mDivider = DimensUtils.dp2px(context, DIVIDER);
