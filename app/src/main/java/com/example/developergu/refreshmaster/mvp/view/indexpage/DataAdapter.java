@@ -3,21 +3,22 @@ package com.example.developergu.refreshmaster.mvp.view.indexpage;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.developergu.refreshmaster.R;
-import com.gu.mvp.view.adapter.IBaseAdapter;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter.ViewHolder;
+import com.gu.mvp.view.adapter.IBaseAdapter;
 
 /** Created by developergu on 2017/12/20. */
 public class DataAdapter extends IBaseAdapter<String, ViewHolder> {
 
   private Context mContext;
 
-  DataAdapter(Context context) {
+  public DataAdapter(Context context) {
     super();
     mContext = context;
   }

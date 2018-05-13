@@ -133,13 +133,13 @@ final class HeaderAndFooterWrapper extends Adapter {
   static class Holder extends RecyclerView.ViewHolder {
     Holder(View itemView) {
       super(itemView);
-      //      itemView.setOnTouchListener(
-      //          new View.OnTouchListener() {
-      //            @Override
-      //            public boolean onTouch(View v, MotionEvent event) {
-      //              return true;
-      //            }
-      //          });
+      itemView.setOnTouchListener(
+          new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+              return true;
+            }
+          });
     }
   }
 
