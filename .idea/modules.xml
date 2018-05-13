@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/HeaderRefresh.iml" filepath="$PROJECT_DIR$/HeaderRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/headerrefresh/headerrefresh.iml" filepath="$PROJECT_DIR$/headerrefresh/headerrefresh.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mvplibrary/mvplibrary.iml" filepath="$PROJECT_DIR$/mvplibrary/mvplibrary.iml" />
     </modules>
   </component>
 </project>

@@ -1,12 +1,14 @@
 package com.example.developergu.refreshmaster;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.developergu.refreshmaster.app.MyApplication;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
+import com.gu.mvp.utils.activity.StatusBarCompat;
 import com.gu.mvp.utils.leaks.CleanLeakUtils;
 
 // first commit here!
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     if (currentFragment == null) {
       showNewView();
     }
-    //    mApplication = (MyApplication) getApplication();
+    StatusBarCompat.compat(this, ContextCompat.getColor(this, R.color.colorPrimaryDark));
   }
 
   private void showNewView() {

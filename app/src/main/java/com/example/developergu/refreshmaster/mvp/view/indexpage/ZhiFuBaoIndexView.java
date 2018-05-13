@@ -14,12 +14,10 @@ import com.developergu.headerrefresh.LlayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
 import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
-import com.example.developergu.refreshmaster.app.MyApplication;
-import com.example.developergu.refreshmaster.di.component.DaggerActivityComponent;
+import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
 import com.gu.mvp.utils.scroll.ScrollUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -68,13 +66,13 @@ public class ZhiFuBaoIndexView
   }
 
   @Override
-  public void injectPresenter() {
-    if (getActivity() == null) return;
-    MyApplication application = (MyApplication) getActivity().getApplication();
-    DaggerActivityComponent.builder()
-        .appComponent(application.getAppComponent())
-        .build()
-        .inject(this);
+  public boolean containsToolBar() {
+    return true;
+  }
+
+  @Override
+  public void inject() {
+    ComponentController.getInstance().getComponent().inject(this);
   }
 
   @Override

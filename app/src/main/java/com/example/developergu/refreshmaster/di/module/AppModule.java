@@ -1,5 +1,8 @@
 package com.example.developergu.refreshmaster.di.module;
 
+import com.example.developergu.refreshmaster.mvp.model.IndexPageModel;
+import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -32,5 +35,16 @@ public class AppModule {
         .baseUrl(BASE_URL)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
+  }
+
+
+  @Provides
+  IndexPagePresenter getIndexPagePresenter(IndexPageModel model) {
+    return new IndexPagePresenter(model);
+  }
+
+  @Provides
+  IndexPageModel getIndexPageModel(Retrofit retrofit) {
+    return new IndexPageModel(retrofit);
   }
 }

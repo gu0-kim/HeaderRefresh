@@ -64,7 +64,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     compile project(':headerrefresh')
-    implementation project(':mvplibrary')
+//    implementation project(':mvplibrary')
+    implementation 'com.gu:mvplibrary:1.0.0'
 }
 
 android.applicationVariants.all { variant ->
