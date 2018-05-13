@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HeaderRefresh.iml" filepath="$PROJECT_DIR$/.idea/HeaderRefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HeaderRefresh.iml" filepath="$PROJECT_DIR$/HeaderRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/headerrefresh/headerrefresh.iml" filepath="$PROJECT_DIR$/headerrefresh/headerrefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvplibrary/mvplibrary.iml" filepath="$PROJECT_DIR$/mvplibrary/mvplibrary.iml" />
