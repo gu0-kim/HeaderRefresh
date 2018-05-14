@@ -3,21 +3,17 @@ package com.example.developergu.refreshmaster.mvp.presenter;
 import android.util.Log;
 
 import com.example.developergu.refreshmaster.mvp.model.IndexPageModel;
-import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
+import com.example.developergu.refreshmaster.mvp.view.indexpage.noappbar.ZhiFuBaoIndexView;
 import com.gu.mvp.presenter.IPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import retrofit2.Response;
 
 public class IndexPagePresenter extends IPresenter<ZhiFuBaoIndexView> {
   private IndexPageModel mModel;

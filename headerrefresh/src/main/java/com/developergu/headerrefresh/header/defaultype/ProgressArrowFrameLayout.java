@@ -135,5 +135,14 @@ public class ProgressArrowFrameLayout extends FrameLayout {
 
   public void clear() {
     mDirection = null;
+    if (mArrowUpAnim != null) {
+      mArrowUpAnim.cancel();
+      mArrowUpAnim = null;
+    }
+    if (mArrowDownAnim != null) {
+      mArrowDownAnim.cancel();
+      mArrowDownAnim = null;
+    }
+    mRotateImageView = null;
   }
 }

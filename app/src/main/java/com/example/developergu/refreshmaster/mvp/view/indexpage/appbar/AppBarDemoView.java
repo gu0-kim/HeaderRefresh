@@ -2,6 +2,7 @@ package com.example.developergu.refreshmaster.mvp.view.indexpage.appbar;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -15,17 +16,22 @@ import com.example.developergu.refreshmaster.mvp.presenter.SimplePresenter;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.BottomDecoration;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter;
 import com.gu.mvp.view.IView;
+import com.gu.mvp.view.adapter.IBaseAdapter;
+import com.jakewharton.rxbinding2.support.v7.widget.RxToolbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
 
 /** Created by devel on 2018/5/13. */
 public class AppBarDemoView extends IView<SimplePresenter>
-    implements RefreshLayout.HeaderOffsetListener {
+    implements RefreshLayout.HeaderOffsetListener,
+        HeaderRefreshRecyclerView.RefreshListener,
+        IBaseAdapter.ItemClickListener {
+
   @BindView(R.id.header_rv)
   HeaderRefreshRecyclerView mRecyclerView;
 
@@ -73,16 +79,22 @@ public class AppBarDemoView extends IView<SimplePresenter>
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
     mAdapter = new DataAdapter(getContext());
-    List<String> data = new ArrayList<>();
-    for (int i = 0; i < 20; i++) {
-      data.add(String.valueOf(i));
-    }
-    mAdapter.add(data);
+    mAdapter.setItemClickListener(this);
     mRecyclerView.setLayoutManager(new LlayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
     mRecyclerView.setAppBarLayout(appBar);
-    //    mRecyclerView.setRefreshListener(this);
+    mRecyclerView.setRefreshListener(this);
+    mRecyclerView.autoRefresh();
+    RxToolbar.navigationClicks(mToolbar)
+        .subscribe(
+            new Consumer<Object>() {
+              @Override
+              public void accept(Object o) throws Exception {
+                if (getActivity() != null) getActivity().finish();
+              }
+            });
+    mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
   }
 
   @Override
@@ -94,8 +106,47 @@ public class AppBarDemoView extends IView<SimplePresenter>
     mAdapter = null;
     mUnbinder.unbind();
     mUnbinder = null;
+    if (tempList != null) {
+      tempList.clear();
+      tempList = null;
+    }
   }
 
   @Override
   public void onOffsetChanged(int offset, int refreshDimen, int maxOffset) {}
+
+  @Override
+  public void onRefreshAnimStart() {
+    presenter.loadSimpleData();
+  }
+
+  @Override
+  public void onRefreshAnimFinished() {
+    if (suc) {
+      mAdapter.getList().addAll(tempList);
+      mAdapter.notifyDataSetChanged();
+      mRecyclerView.invalidateItemDecorations();
+    }
+  }
+
+  private List<String> tempList;
+  private boolean suc;
+
+  public void notifyLoadFin(boolean suc, List<String> list) {
+    this.suc = suc;
+    if (suc && list != null) {
+      if (tempList != null) tempList.clear();
+      tempList = list;
+    }
+    // 先执行"结束动画"，再刷新数据
+    mRecyclerView.doRefreshFinishAnim();
+  }
+
+  @Override
+  public void onItemClick(int pos) {
+    Log.e(getLogTagName(), "onItemClick: " + pos);
+  }
+
+  @Override
+  public void onItemLongClick(int pos) {}
 }

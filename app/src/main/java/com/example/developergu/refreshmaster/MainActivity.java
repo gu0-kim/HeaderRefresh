@@ -1,64 +1,53 @@
 package com.example.developergu.refreshmaster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.support.v7.widget.Toolbar;
 
-import com.example.developergu.refreshmaster.app.MyApplication;
-import com.example.developergu.refreshmaster.mvp.view.indexpage.ZhiFuBaoIndexView;
+import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.gu.mvp.utils.activity.StatusBarCompat;
-import com.gu.mvp.utils.leaks.CleanLeakUtils;
+import com.jakewharton.rxbinding2.support.v7.widget.RxToolbar;
 
-// first commit here!
-public class MainActivity extends AppCompatActivity {
-  ZhiFuBaoIndexView currentFragment;
-  //  static MyApplication mApplication;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
+
+public class MainActivity extends BaseActivity {
+
+  @BindView(R.id.toolbar)
+  Toolbar toolbar;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-    currentFragment = getCurrentFragment();
-    if (currentFragment == null) {
-      showNewView();
-    }
     StatusBarCompat.compat(this, ContextCompat.getColor(this, R.color.colorPrimaryDark));
+    setContentView(R.layout.main_list);
+    ButterKnife.bind(this);
+    RxToolbar.navigationClicks(toolbar)
+        .subscribe(
+            new Consumer<Object>() {
+              @Override
+              public void accept(Object o) throws Exception {
+                finish();
+              }
+            });
   }
 
-  private void showNewView() {
-    currentFragment = ZhiFuBaoIndexView.getInstance();
-    getSupportFragmentManager()
-        .beginTransaction()
-        .replace(R.id.content_view, currentFragment)
-        .commit();
+  @OnClick(R.id.appBarActivityBtn)
+  public void startAppBarActivity() {
+    startActivity(new Intent(this, SimpleDemoActivity.class));
   }
 
-  private ZhiFuBaoIndexView getCurrentFragment() {
-    return (ZhiFuBaoIndexView) getSupportFragmentManager().findFragmentById(R.id.content_view);
-  }
-
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent ev) {
-    return currentFragment != null
-        && !currentFragment.isCollapseAnimRunning()
-        && super.dispatchTouchEvent(ev);
+  @OnClick(R.id.zhifubaoActivityBtn)
+  public void startZhiFuBaoActivity() {
+    startActivity(new Intent(this, ZhiFuBaoActivity.class));
   }
 
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    CleanLeakUtils.fixInputMethodManagerLeak(this);
-    checkItem(currentFragment);
-    checkItem(this);
-    currentFragment = null;
-  }
-
-  public void checkItem(Object object) {
-    if (object != null) {
-      Log.e("TAG", "checkItem: " + object);
-      ((MyApplication) getApplication()).getRefWatcher().watch(object);
-    }
+    ComponentController.getInstance().release();
   }
 }

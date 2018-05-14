@@ -1,4 +1,4 @@
-package com.example.developergu.refreshmaster.mvp.view.indexpage;
+package com.example.developergu.refreshmaster.mvp.view.indexpage.noappbar;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +16,8 @@ import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
 import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
+import com.example.developergu.refreshmaster.mvp.view.indexpage.BottomDecoration;
+import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter;
 import com.gu.mvp.utils.scroll.ScrollUtils;
 
 import java.util.List;
@@ -54,7 +56,7 @@ public class ZhiFuBaoIndexView
   private boolean initTranslation;
   private int mCurrentScrollY;
   private static final float COLLAPSE_PARALLAX_MULTIPLIER = 0.6f; // 异步滚动因子
-  private static final float COLLAPSE_RATE_TRIGGER = 0.2f; // 折叠到40%开始切换toolbar
+  private static final float START_COLLAPSE_RATE = 0.2f; // 折叠到40%开始切换toolbar
   private static final float MIN_ALPHA = 0.3f;
   private static final String TAG = ZhiFuBaoIndexView.class.getName();
 
@@ -93,6 +95,7 @@ public class ZhiFuBaoIndexView
             .build(getContext());
     View customHeader =
         LayoutInflater.from(getContext()).inflate(R.layout.header_custom_layout, mToolbar, false);
+    initCustomClickListener(customHeader);
     front_mask_view = customHeader.findViewById(R.id.top_front);
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
@@ -133,6 +136,46 @@ public class ZhiFuBaoIndexView
             initTranslation = true;
           }
         });
+    mRecyclerView.autoRefresh();
+  }
+
+  private void initCustomClickListener(View customHeader) {
+    customHeader
+        .findViewById(R.id.top_scan_btn_front)
+        .setOnClickListener(
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                showToast(mActivity.getApplicationContext(), "扫一扫");
+              }
+            });
+    customHeader
+        .findViewById(R.id.top_payment_btn_front)
+        .setOnClickListener(
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                showToast(mActivity.getApplicationContext(), "付钱");
+              }
+            });
+    customHeader
+        .findViewById(R.id.top_transfer_btn_front)
+        .setOnClickListener(
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                showToast(mActivity.getApplicationContext(), "收钱");
+              }
+            });
+    customHeader
+        .findViewById(R.id.top_card_btn_front)
+        .setOnClickListener(
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                showToast(mActivity.getApplicationContext(), "卡包");
+              }
+            });
   }
 
   @Override
@@ -150,6 +193,7 @@ public class ZhiFuBaoIndexView
     mUnbinder = null;
   }
 
+  /*判断是否是展开与折叠的中间状态*/
   @Override
   public boolean isMiddleState(HeaderRefreshRecyclerView view) {
     return mCurrentScrollY < mParallaxViewHeight && mCurrentScrollY != 0;
@@ -166,14 +210,14 @@ public class ZhiFuBaoIndexView
     mLastCollapseScrollY = curScrollY;
     mCollapseParallaxLayout.setTranslationY(calcParallaxViewTransY(curScrollY));
     float rate = Math.abs(getCollapseRate(curScrollY));
-    if (rate <= COLLAPSE_RATE_TRIGGER) {
+    if (rate <= START_COLLAPSE_RATE) {
       fold_layout.setVisibility(View.VISIBLE);
-      fold_layout.setAlpha(1f - rate / COLLAPSE_RATE_TRIGGER);
+      fold_layout.setAlpha(1f - rate / START_COLLAPSE_RATE);
     } else {
       fold_layout.setVisibility(View.GONE);
       open_layout.setVisibility(View.VISIBLE);
-      open_layout.setAlpha(Math.min(rate - COLLAPSE_RATE_TRIGGER + MIN_ALPHA, 1f));
-      //      front_mask_view.setAlpha(Math.min(rate - COLLAPSE_RATE_TRIGGER, 1f -
+      open_layout.setAlpha(Math.min(rate - START_COLLAPSE_RATE + MIN_ALPHA, 1f));
+      //      front_mask_view.setAlpha(Math.min(rate - START_COLLAPSE_RATE, 1f -
       // MIN_ALPHA));
     }
     front_mask_view.setAlpha(rate);
@@ -199,6 +243,7 @@ public class ZhiFuBaoIndexView
     return getNotShowHeight(view) > mParallaxViewHeight - mCurrentScrollY;
   }
 
+  /** 获取屏幕外未显示的尺寸 */
   @Override
   public int getNotShowHeight(HeaderRefreshRecyclerView view) {
     return view.computeVerticalScrollRange()
@@ -242,7 +287,7 @@ public class ZhiFuBaoIndexView
   public void onRefreshAnimFinished() {
     // 动画结束后，更新数据
     if (suc) {
-      mAdapter.add(temp);
+      mAdapter.getList().addAll(0, temp);
       mAdapter.notifyDataSetChanged();
       mRecyclerView.invalidateItemDecorations();
     } else {

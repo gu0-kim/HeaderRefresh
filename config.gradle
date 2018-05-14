@@ -9,22 +9,23 @@ ext {
     ]
 
     version = [
-            androidSupportSdkVersion: "27.1.0",
-            dagger2SdkVersion       : "2.15",
-            butterknifeSdkVersion   : "8.4.0",
-            canarySdkVersion        : "1.5.4",
-            xrecyclerviewVersion    : "1.5.9",
-            rxjavaVersion           : "2.1.10",
-            rxandroidVersion        : "2.0.2",
-            rxbindingVersion        : "2.0.0",
-            adapterRxjava2Version   : "2.3.0",
-            leakcanaryAndroidVersion: "1.5.4",
-            constraintLayoutVersion : "1.0.2",
-            runnerVersion           : "1.0.1",
-            espressoCoreVersion     : "3.0.1",
-            junitVersion            : "4.12",
-            retrofitVerion          : "2.3.0",
-            convertergsonVersion    : "2.3.0",
+            androidSupportSdkVersion   : "27.1.0",
+            dagger2SdkVersion          : "2.15",
+            butterknifeSdkVersion      : "8.4.0",
+            canarySdkVersion           : "1.5.4",
+            xrecyclerviewVersion       : "1.5.9",
+            rxjavaVersion              : "2.1.10",
+            rxandroidVersion           : "2.0.2",
+            rxbindingVersion           : "2.0.0",
+            rxbindingAppcompatV7Version: "2.1.1",
+            adapterRxjava2Version      : "2.3.0",
+            leakcanaryAndroidVersion   : "1.5.4",
+            constraintLayoutVersion    : "1.0.2",
+            runnerVersion              : "1.0.1",
+            espressoCoreVersion        : "3.0.1",
+            junitVersion               : "4.12",
+            retrofitVerion             : "2.3.0",
+            convertergsonVersion       : "2.3.0",
     ]
 
     dependencies = [
@@ -49,7 +50,9 @@ ext {
             "rxjava"                  : "io.reactivex.rxjava2:rxjava:${version["rxjavaVersion"]}",
             "rxandroid"               : "io.reactivex.rxjava2:rxandroid:${version["rxandroidVersion"]}",
             "adapter-rxjava2"         : "com.squareup.retrofit2:adapter-rxjava2:${version["adapterRxjava2Version"]}",
+
             "rxbinding"               : "com.jakewharton.rxbinding2:rxbinding:${version["rxbindingVersion"]}",
+            "rxbinding-appcompat-v7"  : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:${version["rxbindingAppcompatV7Version"]}",
 
             "retrofit"                : "com.squareup.retrofit2:retrofit:${version["retrofitVerion"]}",
             "converter-gson"          : "com.squareup.retrofit2:converter-gson:${version["convertergsonVersion"]}",

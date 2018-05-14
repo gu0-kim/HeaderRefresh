@@ -130,7 +130,9 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
   public boolean dispatchNestedPreScroll(
       int dx, int dy, int[] consumed, int[] offsetInWindow, int type) {
     if (!forceMove && canRefresh && refreshLayoutExistAndVisible()) {
+      // 主要目的在refreshlayout可见的状态下，向上拖动时防止抖动状态
       setScrollable(false);
+      // return false表示不向父view传递
       return false;
     }
     setScrollable(true);

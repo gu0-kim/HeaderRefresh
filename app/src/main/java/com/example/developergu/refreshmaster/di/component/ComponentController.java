@@ -19,4 +19,9 @@ public class ComponentController {
   public AppComponent getComponent() {
     return mComponent;
   }
+
+  public void release() {
+    instance = null;
+    mComponent = null;
+  }
 }

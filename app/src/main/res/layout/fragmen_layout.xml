@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.developergu.refreshmaster.MainActivity">
+    tools:context="com.example.developergu.refreshmaster.ZhiFuBaoActivity">
 
 
     <include layout="@layout/toolbar_below_btn_layout" />

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.developergu.refreshmaster.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:title="HeaderRefreshLayoutDemo"
+        app:titleTextColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/appBarActivityBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_bg"
+        android:padding="10dp"
+        android:text="AppBar Demo"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/zhifubaoActivityBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_bg"
+        android:padding="10dp"
+        android:text="zhifubao Demo"
+        android:textColor="@color/colorWhite" />
+</LinearLayout>

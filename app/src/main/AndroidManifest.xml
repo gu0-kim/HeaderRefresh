@@ -14,17 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.developergu.refreshmaster.MainActivity"
-            android:excludeFromRecents="true" />
+            android:name=".ZhiFuBaoActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/tranAppTheme" />
         <activity
-            android:name="com.example.developergu.refreshmaster.SimpleDemoActivity"
-            android:excludeFromRecents="true">
+            android:name=".SimpleDemoActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/tranAppTheme" />
+        <activity
+            android:name=".MainActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/tranAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TestTranActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/tranAppTheme"></activity>
     </application>
 
 </manifest>

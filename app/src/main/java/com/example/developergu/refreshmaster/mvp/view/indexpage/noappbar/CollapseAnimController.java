@@ -1,4 +1,4 @@
-package com.example.developergu.refreshmaster.mvp.view.indexpage;
+package com.example.developergu.refreshmaster.mvp.view.indexpage.noappbar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
