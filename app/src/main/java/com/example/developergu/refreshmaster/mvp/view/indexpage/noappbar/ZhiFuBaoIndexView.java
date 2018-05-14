@@ -48,6 +48,7 @@ public class ZhiFuBaoIndexView
   @BindView(R.id.header_rv)
   HeaderRefreshRecyclerView mRecyclerView;
 
+  private View customHeader;
   private LinearLayout front_mask_view;
   private DataAdapter mAdapter;
 
@@ -93,7 +94,7 @@ public class ZhiFuBaoIndexView
             .setOffsetListener(this)
             .setAnimVelocity(300)
             .build(getContext());
-    View customHeader =
+    customHeader =
         LayoutInflater.from(getContext()).inflate(R.layout.header_custom_layout, mToolbar, false);
     initCustomClickListener(customHeader);
     front_mask_view = customHeader.findViewById(R.id.top_front);
@@ -129,6 +130,13 @@ public class ZhiFuBaoIndexView
           public void run() {
             mParallaxViewHeight = mCollapseParallaxLayout.getHeight();
             mToolbarHeight = mToolbar.getHeight();
+            // <--start-->由于是否使用fitsSystemWindows未知，所以toolbar高度不能写死，要动态获取实际toolbar高度，再给占位的content_toolbar赋具体的值。
+            LinearLayout content_toolbar = customHeader.findViewById(R.id.content_toolbar);
+            LinearLayout.LayoutParams param =
+                (LinearLayout.LayoutParams) content_toolbar.getLayoutParams();
+            param.height = mToolbarHeight;
+            content_toolbar.setLayoutParams(param);
+            // <--end-->
             minTop = mToolbarHeight - (int) (mParallaxViewHeight * COLLAPSE_PARALLAX_MULTIPLIER);
             maxTop = mToolbarHeight;
             mCollapseParallaxLayout.setTranslationY(maxTop);

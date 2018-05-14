@@ -5,9 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <!--给toolbar留空间，高度待定，高度要等于toolbar实际高度（由于toolbar是否有fitsSystemWindows属性未知，所以高度待定）-->
     <LinearLayout
+        android:id="@+id/content_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="1dp"
+        android:orientation="vertical" />
 
     <LinearLayout
         android:id="@+id/top_front"
