@@ -31,10 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TestTranActivity"
-            android:excludeFromRecents="true"
-            android:theme="@style/tranAppTheme"></activity>
     </application>
 
 </manifest>
