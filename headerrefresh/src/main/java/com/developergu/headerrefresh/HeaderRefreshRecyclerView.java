@@ -123,7 +123,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
   }
 
   private void setScrollable(boolean scrollable) {
-    ((LlayoutManager) getLayoutManager()).setCanScroll(scrollable);
+    ((ScrollControlLinearLayoutManager) getLayoutManager()).setCanScroll(scrollable);
   }
 
   @Override

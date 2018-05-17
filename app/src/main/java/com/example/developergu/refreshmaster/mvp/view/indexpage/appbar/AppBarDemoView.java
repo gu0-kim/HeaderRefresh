@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.developergu.headerrefresh.HeaderRefreshRecyclerView;
-import com.developergu.headerrefresh.LlayoutManager;
+import com.developergu.headerrefresh.ScrollControlLinearLayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
 import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
@@ -80,7 +80,7 @@ public class AppBarDemoView extends IView<SimplePresenter>
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
     mAdapter = new DataAdapter(getContext());
     mAdapter.setItemClickListener(this);
-    mRecyclerView.setLayoutManager(new LlayoutManager(getContext()));
+    mRecyclerView.setLayoutManager(new ScrollControlLinearLayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
     mRecyclerView.setAppBarLayout(appBar);

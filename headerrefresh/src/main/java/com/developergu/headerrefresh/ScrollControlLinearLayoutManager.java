@@ -6,19 +6,19 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 /** Created by developgergu on 2017/12/15. */
-public class LlayoutManager extends LinearLayoutManager {
+public class ScrollControlLinearLayoutManager extends LinearLayoutManager {
   private boolean canScroll = true;
   //    private boolean mFindHeader;
 
-  public LlayoutManager(Context context) {
+  public ScrollControlLinearLayoutManager(Context context) {
     super(context);
   }
 
-  public LlayoutManager(Context context, int orientation, boolean reverseLayout) {
+  public ScrollControlLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
     super(context, orientation, reverseLayout);
   }
 
-  public LlayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+  public ScrollControlLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
   }
 

@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.developergu.headerrefresh.HeaderRefreshRecyclerView;
-import com.developergu.headerrefresh.LlayoutManager;
+import com.developergu.headerrefresh.ScrollControlLinearLayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
 import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
@@ -101,7 +101,7 @@ public class ZhiFuBaoIndexView
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
     mAdapter = new DataAdapter(getContext());
-    mRecyclerView.setLayoutManager(new LlayoutManager(getContext()));
+    mRecyclerView.setLayoutManager(new ScrollControlLinearLayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
     mRecyclerView.setRefreshListener(this);
