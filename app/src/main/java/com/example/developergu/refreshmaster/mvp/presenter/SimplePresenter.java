@@ -16,7 +16,7 @@ import io.reactivex.functions.Function;
 public class SimplePresenter extends IPresenter<AppBarDemoView> {
   public void loadSimpleData() {
     addTask(
-        Observable.timer(1, TimeUnit.SECONDS)
+        Observable.timer(4, TimeUnit.SECONDS)
             .take(1)
             .map(
                 new Function<Long, List<String>>() {

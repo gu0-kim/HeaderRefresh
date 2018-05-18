@@ -15,6 +15,8 @@ import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.example.developergu.refreshmaster.mvp.presenter.SimplePresenter;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.BottomDecoration;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter;
+import com.gu.mvp.utils.dimen.DimenUtils;
+import com.gu.mvp.utils.scroll.ScrollUtils;
 import com.gu.mvp.view.IView;
 import com.gu.mvp.view.adapter.IBaseAdapter;
 import com.jakewharton.rxbinding2.support.v7.widget.RxToolbar;
@@ -95,6 +97,15 @@ public class AppBarDemoView extends IView<SimplePresenter>
               }
             });
     mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
+    if (DimenUtils.currentSdkUpVersion(14))
+      ScrollUtils.addOnGlobalLayoutListener(
+          mToolbar,
+          new Runnable() {
+            @Override
+            public void run() {
+              DimenUtils.setToolbarFitsSystemWindows(getContext(), mToolbar);
+            }
+          });
   }
 
   @Override
