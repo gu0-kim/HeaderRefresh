@@ -65,7 +65,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     implementation project(':headerrefresh')
-    implementation 'com.gu:mvplibrary:1.0.1'
+    implementation 'com.gu:mvplibrary:1.0.2'
     implementation rootProject.ext.dependencies["rxbinding-appcompat-v7"]
 }
 

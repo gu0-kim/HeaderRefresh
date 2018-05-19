@@ -18,6 +18,7 @@ import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.example.developergu.refreshmaster.mvp.presenter.IndexPagePresenter;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.BottomDecoration;
 import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter;
+import com.gu.mvp.utils.dimen.DimenUtils;
 import com.gu.mvp.utils.scroll.ScrollUtils;
 
 import java.util.List;
@@ -129,7 +130,9 @@ public class ZhiFuBaoIndexView
           @Override
           public void run() {
             mParallaxViewHeight = mCollapseParallaxLayout.getHeight();
-            mToolbarHeight = mToolbar.getHeight();
+            if (DimenUtils.currentSdkUpVersion(19))
+              DimenUtils.setToolbarFitsSystemWindows(ZhiFuBaoIndexView.this.getContext(), mToolbar);
+            mToolbarHeight = mToolbar.getLayoutParams().height;
             // <--start-->由于是否使用fitsSystemWindows未知，所以toolbar高度不能写死，要动态获取实际toolbar高度，再给占位的content_toolbar赋具体的值。
             LinearLayout content_toolbar = customHeader.findViewById(R.id.content_toolbar);
             LinearLayout.LayoutParams param =
