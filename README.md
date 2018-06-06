@@ -4,15 +4,15 @@
 
 - demo1 实现了某宝的首页功能
 
-参见项目中的[ZhiFuBaoIndexView](http://note.youdao.com/)
+参见项目中的[ZhiFuBaoIndexView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/noappbar/ZhiFuBaoIndexView.java)
     
-![image](http://note.youdao.com/favicon.ico)
+![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/refresh.gif)
 
 - demo2 实现了HeaderRefresh在使用appbar的情景
 
-参见项目中的[AppBarDemoView](http://note.youdao.com/)
+参见项目中的[AppBarDemoView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/appbar/AppBarDemoView.java)
 
-![image](http://note.youdao.com/favicon.ico)
+![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/appbar_refresh.gif)
 
 ## 项目说明
 
@@ -21,11 +21,11 @@
 
 - 支持nestscrolling机制。如果有appbar，则当appbar完全展开后，继续拖拽，才会触发HeaderRefresh的下拉刷新。
 
-- 自带一种默认的刷新头部[DefaultRefreshLayout](http://note.youdao.com/)。也可根据自己需求仿照DefaultRefreshLayout进行扩展。
+- 自带一种默认的刷新头部[DefaultRefreshLayout](https://github.com/gu0-kim/HeaderRefresh/blob/master/headerrefresh/src/main/java/com/developergu/headerrefresh/header/defaultype/DefaultRefreshLayout.java)。也可根据自己需求仿照DefaultRefreshLayout进行扩展。
 
 ## 组件结构
 
-![image](http://note.youdao.com/favicon.ico)
+![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/HeaderRefreshRecyclerView.png)
 
 ## 使用方法
 
