@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ import com.example.developergu.refreshmaster.mvp.view.indexpage.BottomDecoration
 import com.example.developergu.refreshmaster.mvp.view.indexpage.DataAdapter;
 import com.gu.mvp.utils.dimen.DimenUtils;
 import com.gu.mvp.utils.scroll.ScrollUtils;
+import com.gu.mvp.view.adapter.IBaseAdapter;
 
 import java.util.List;
 
@@ -32,7 +34,9 @@ import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
 /** Created by developergu on 2018/1/17. */
 public class ZhiFuBaoIndexView
     extends HeaderCollapseView<HeaderRefreshRecyclerView, IndexPagePresenter>
-    implements RefreshLayout.HeaderOffsetListener, HeaderRefreshRecyclerView.RefreshListener {
+    implements RefreshLayout.HeaderOffsetListener,
+        HeaderRefreshRecyclerView.RefreshListener,
+        IBaseAdapter.ItemClickListener {
 
   @BindView(R.id.toolbar)
   Toolbar mToolbar;
@@ -49,7 +53,6 @@ public class ZhiFuBaoIndexView
   @BindView(R.id.header_rv)
   HeaderRefreshRecyclerView mRecyclerView;
 
-  private View customHeader;
   private LinearLayout front_mask_view;
   private DataAdapter mAdapter;
 
@@ -58,7 +61,7 @@ public class ZhiFuBaoIndexView
   private boolean initTranslation;
   private int mCurrentScrollY;
   private static final float COLLAPSE_PARALLAX_MULTIPLIER = 0.6f; // 异步滚动因子
-  private static final float START_COLLAPSE_RATE = 0.2f; // 折叠到40%开始切换toolbar
+  private static final float START_COLLAPSE_RATE = 0.2f; // 折叠到20%开始切换toolbar
   private static final float MIN_ALPHA = 0.3f;
   private static final String TAG = ZhiFuBaoIndexView.class.getName();
 
@@ -95,13 +98,15 @@ public class ZhiFuBaoIndexView
             .setOffsetListener(this)
             .setAnimVelocity(300)
             .build(getContext());
-    customHeader =
+
+    final View customHeader =
         LayoutInflater.from(getContext()).inflate(R.layout.header_custom_layout, mToolbar, false);
     initCustomClickListener(customHeader);
     front_mask_view = customHeader.findViewById(R.id.top_front);
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
     mAdapter = new DataAdapter(getContext());
+    mAdapter.setItemClickListener(this);
     mRecyclerView.setLayoutManager(new ScrollControlLinearLayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
@@ -147,7 +152,7 @@ public class ZhiFuBaoIndexView
             initTranslation = true;
           }
         });
-    mRecyclerView.autoRefresh();
+    mRecyclerView.doAutoRefresh();
   }
 
   private void initCustomClickListener(View customHeader) {
@@ -320,4 +325,12 @@ public class ZhiFuBaoIndexView
     suc = false;
     mRecyclerView.doRefreshFinishAnim();
   }
+
+  @Override
+  public void onItemClick(int pos) {
+    Log.e(TAG, "onItemClick: " + pos);
+  }
+
+  @Override
+  public void onItemLongClick(int pos) {}
 }

@@ -33,11 +33,13 @@ public class DefaultRefreshLayout extends RefreshLayout {
   private DefaultRefreshLayout(Context context, @Nullable AttributeSet attrs, Builder builder) {
     super(context, attrs);
     if (builder != null) {
-      this.mPullRate = builder.pullRate;
-      this.mHeaderPullOverRate = builder.pullOverRate;
+      this.mPull2MoveRate = builder.pullRate;
+      this.mHeaderPullOverRefreshRate = builder.pullOverRate;
       this.mRefreshFixableLayoutId = builder.refreshFixableLayoutId;
       this.mAnimVelocity = builder.animVelocity;
       this.mOffsetListener = builder.listener;
+    } else {
+      mAnimVelocity = 500;
     }
     init(context, attrs);
   }

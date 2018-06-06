@@ -41,7 +41,7 @@ public class ScrollControlLinearLayoutManager extends LinearLayoutManager {
     //                if (findFirstVisibleItemPosition() == 0) {
     //                    View view = findViewByPosition(0);
     //                    if (view instanceof HeaderLayout) {
-    //                        float rate = ((HeaderLayout) view).getPullRate();
+    //                        float rate = ((HeaderLayout) view).getPull2MoveRate();
     //                        ((HeaderRefreshRecyclerView)
     // recyclerView).findHeaderPullRate(rate);
     //                        Log.e("TAG", "----onLayoutCompleted: " + rate);

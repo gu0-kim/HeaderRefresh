@@ -15,9 +15,10 @@
             android:layout_height="match_parent"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:scrimAnimationDuration="0"
             app:scrimVisibleHeightTrigger="82dp"
             app:statusBarScrim="@color/colorTransparent"
-            app:title="appBar">
+            app:titleEnabled="false">
             <!--81dp=56dp+25dp-->
             <ImageView
                 android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 app:collapseIcon="@drawable/ic_arrow_back_white_24dp"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
+                app:title="Happy app"
                 app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
                 app:titleTextColor="@color/colorWhite" />
 

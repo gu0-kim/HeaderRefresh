@@ -47,13 +47,11 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
   }
 
   public HeaderRefreshRecyclerView(Context context) {
-    super(context);
-    init();
+    this(context, null);
   }
 
   public HeaderRefreshRecyclerView(Context context, @Nullable AttributeSet attrs) {
-    super(context, attrs);
-    init();
+    this(context, attrs,0);
   }
 
   public HeaderRefreshRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
@@ -65,7 +63,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
     this.canRefresh = canRefresh;
   }
 
-  public void autoRefresh() {
+  public void doAutoRefresh() {
     if (canRefresh)
       ViewCompat.postOnAnimationDelayed(
           this,
@@ -238,7 +236,7 @@ public class HeaderRefreshRecyclerView extends RecyclerView {
   public void setRefreshLayoutHeaderView(RefreshLayout header) {
     this.mRefreshLayout = header;
     if (mRefreshLayout != null) {
-      PULL_RATE = mRefreshLayout.getPullRate();
+      PULL_RATE = mRefreshLayout.getPull2MoveRate();
     }
   }
 

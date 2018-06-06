@@ -1,15 +1,16 @@
 package com.example.developergu.refreshmaster.mvp.view.indexpage.appbar;
 
+import android.annotation.SuppressLint;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.developergu.headerrefresh.HeaderRefreshRecyclerView;
 import com.developergu.headerrefresh.ScrollControlLinearLayoutManager;
 import com.developergu.headerrefresh.header.RefreshLayout;
-import com.developergu.headerrefresh.header.defaultype.DefaultRefreshLayout;
 import com.example.developergu.refreshmaster.R;
 import com.example.developergu.refreshmaster.di.component.ComponentController;
 import com.example.developergu.refreshmaster.mvp.presenter.SimplePresenter;
@@ -65,29 +66,34 @@ public class AppBarDemoView extends IView<SimplePresenter>
     return R.layout.appbar_demo_layout;
   }
 
+  @SuppressLint("CheckResult")
   @Override
   public void initView(View parent) {
     mUnbinder = ButterKnife.bind(this, parent);
+    //    RefreshLayout refreshLayout =
+    //        new DefaultRefreshLayout.DefaultHeaderBuilder()
+    //            //            .setRefreshFixableLayoutId(R.layout.header_btn_layout)
+    //            .setPullRate(0.5f)
+    //            .setPullOverRate(0.5f)
+    //            .setOffsetListener(this)
+    //            .setAnimVelocity(300)
+    //            .build(getContext());
     RefreshLayout refreshLayout =
-        new DefaultRefreshLayout.DefaultHeaderBuilder()
-            //            .setRefreshFixableLayoutId(R.layout.header_btn_layout)
-            .setPullRate(0.5f)
-            .setPullOverRate(0.5f)
-            .setOffsetListener(this)
-            .setAnimVelocity(300)
-            .build(getContext());
+        (RefreshLayout)
+            getLayoutInflater().inflate(R.layout.default_refresh_layout, (ViewGroup) parent, false);
+    refreshLayout.setOffsetListener(this);
     View customHeader =
         LayoutInflater.from(getContext()).inflate(R.layout.simple_header_layout, mToolbar, false);
     mRecyclerView.setCustomHeaderView(customHeader);
     mRecyclerView.setRefreshLayoutHeaderView(refreshLayout);
+    mRecyclerView.setAppBarLayout(appBar);
+    mRecyclerView.setRefreshListener(this);
+
     mAdapter = new DataAdapter(getContext());
     mAdapter.setItemClickListener(this);
     mRecyclerView.setLayoutManager(new ScrollControlLinearLayoutManager(getContext()));
     mRecyclerView.setAdapter(mAdapter);
     mRecyclerView.addItemDecoration(new BottomDecoration(getContext(), 1));
-    mRecyclerView.setAppBarLayout(appBar);
-    mRecyclerView.setRefreshListener(this);
-    mRecyclerView.autoRefresh();
     RxToolbar.navigationClicks(mToolbar)
         .subscribe(
             new Consumer<Object>() {
@@ -106,6 +112,8 @@ public class AppBarDemoView extends IView<SimplePresenter>
               DimenUtils.setToolbarFitsSystemWindows(getContext(), mToolbar);
             }
           });
+    //
+    mRecyclerView.doAutoRefresh();
   }
 
   @Override

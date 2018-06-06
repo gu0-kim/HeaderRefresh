@@ -23,7 +23,7 @@ public class SimplePresenter extends IPresenter<AppBarDemoView> {
                   @Override
                   public List<String> apply(Long arg) throws Exception {
                     List<String> data = new ArrayList<>();
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 10; i++) {
                       data.add(String.valueOf(i));
                     }
                     return data;

@@ -21,7 +21,7 @@ public abstract class RefreshLayout extends LinearLayout implements RefreshableV
   /*初始高度，默认是RefreshFixableLayout高度*/
   protected int LAYOUT_INIT_SIZE;
 
-  /*最大下拉距离,该值来自xml文件height*/
+  /*最大下拉距离,该值是由mHeaderPullOverRate计算得来的*/
   protected int MAX_PULL_SIZE;
 
   /*下拉距离到达该值后，释放可刷新*/
@@ -41,10 +41,10 @@ public abstract class RefreshLayout extends LinearLayout implements RefreshableV
   /** builder config */
 
   /*下拉和实际移动比率*/
-  protected float mPullRate;
+  protected float mPull2MoveRate;
 
   /*比率越大，到达刷新距离后能移动的距离越大*/
-  protected float mHeaderPullOverRate;
+  protected float mHeaderPullOverRefreshRate;
 
   /*id指向refreshLayout的固定头部*/
   protected int mRefreshFixableLayoutId;
@@ -96,9 +96,9 @@ public abstract class RefreshLayout extends LinearLayout implements RefreshableV
       if (ta != null) {
         mRefreshFixableLayoutId =
             ta.getResourceId(R.styleable.RefreshLayout_fixable_layout, INVALID_LAYOUT_ID);
-        mPullRate = ta.getFloat(R.styleable.RefreshLayout_pull_distance_rate, mPullRate);
-        mHeaderPullOverRate =
-            ta.getFloat(R.styleable.RefreshLayout_header_refresh_rate, mHeaderPullOverRate);
+        mPull2MoveRate = ta.getFloat(R.styleable.RefreshLayout_pull_distance_rate, mPull2MoveRate);
+        mHeaderPullOverRefreshRate =
+            ta.getFloat(R.styleable.RefreshLayout_header_refresh_rate, mHeaderPullOverRefreshRate);
         ta.recycle();
       }
     } else {
@@ -132,7 +132,7 @@ public abstract class RefreshLayout extends LinearLayout implements RefreshableV
           widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
       REFRESH_NEED_PULL_SIZE = mRefreshEntityView.getMeasuredHeight();
       REFRESH_HEIGHT = LAYOUT_INIT_SIZE + REFRESH_NEED_PULL_SIZE;
-      MAX_PULL_SIZE = (int) (REFRESH_NEED_PULL_SIZE * (1f + mHeaderPullOverRate));
+      MAX_PULL_SIZE = (int) (REFRESH_NEED_PULL_SIZE * (1f + mHeaderPullOverRefreshRate));
       MAX_HEIGHT = LAYOUT_INIT_SIZE + MAX_PULL_SIZE;
       configRefreshLayout();
       // 设置layout params高度，防止多次measure时变化
@@ -236,8 +236,12 @@ public abstract class RefreshLayout extends LinearLayout implements RefreshableV
     return REFRESH_HEIGHT;
   }
 
-  public float getPullRate() {
-    return mPullRate;
+  public float getPull2MoveRate() {
+    return mPull2MoveRate;
+  }
+
+  public void setAnimVelocity(int animVelocity) {
+    mAnimVelocity = animVelocity;
   }
 
   public abstract static class Builder {
