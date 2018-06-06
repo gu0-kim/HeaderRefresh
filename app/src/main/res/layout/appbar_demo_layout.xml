@@ -36,7 +36,7 @@
                 app:collapseIcon="@drawable/ic_arrow_back_white_24dp"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
-                app:title="Happy app"
+                app:title="UseAppBarDemo"
                 app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
                 app:titleTextColor="@color/colorWhite" />
 
