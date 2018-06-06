@@ -10,7 +10,7 @@ android {
         }
     }
 
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.developgergu.headerrefresh.recyclerview.master"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
@@ -34,7 +34,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
