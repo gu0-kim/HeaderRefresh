@@ -6,7 +6,7 @@
 
 参见项目中的[ZhiFuBaoIndexView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/noappbar/ZhiFuBaoIndexView.java)
     
-![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/refresh.gif)  ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/4.gif)
+![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/refresh.gif)        ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/4.gif)
 
 - demo2 实现了HeaderRefresh在使用appbar的情景
 
