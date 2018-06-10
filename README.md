@@ -20,7 +20,7 @@ demo1截图
 
 ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/appbar_refresh.gif)
 
-## 关于HeaderRefresh
+## HeaderRefresh组件
 
 
 - 用recyclerView实现的带customHeader的刷新组件。刷新的部分出现在customHeader下面。
