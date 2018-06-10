@@ -1,8 +1,12 @@
 # HeaderRefresh
 
-## HeaderRefresh的demo
+## HeaderRefresh demo
 
-1. demo1 实现了某宝的首页功能
+提供两个使用HeaderRefresh的demo
+
+### demo1 
+
+实现了某宝的首页功能
 
 模仿某宝的demo**并没有**使用CoordinatorLayout+CollapsingToolbarLayout的结构，原因有二：
 - CollapsingToolbarLayout折叠时动画有卡顿问题，体验并不好。
@@ -14,9 +18,13 @@ demo1截图
 
 ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/refresh.gif)        ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/4.gif)
 
-2. demo2 实现了HeaderRefresh在使用appbar的情景
+### demo2 
+
+实现了HeaderRefresh在使用appbar的情景
 
 参见项目中的[AppBarDemoView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/appbar/AppBarDemoView.java)
+
+demo2截图
 
 ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/appbar_refresh.gif)
 
