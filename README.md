@@ -1,20 +1,26 @@
 # HeaderRefresh
 
-## 项目demo截图
+## HeaderRefresh的demo
 
-- demo1 实现了某宝的首页功能
+1. demo1 实现了某宝的首页功能
+
+模仿某宝的demo**并没有**使用CoordinatorLayout+CollapsingToolbarLayout的结构，原因有二：
+- CollapsingToolbarLayout折叠时动画有卡顿问题，体验并不好。
+- 如果使用CollapsingToolbarLayout，当down事件发生在CollapsingToolbarLayout上，最大只能下拉到CollapsingToolbarLayout完全展开，不能连续进行下拉刷新。使用本demo的结构，从展开到拖拽刷新可以连续执行，用户体验很好。背景的异步滚动效果是通过监听HeaderRefreshRecyclerView的滚动位移处理的。感兴趣的可以看一下代码。
 
 参见项目中的[ZhiFuBaoIndexView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/noappbar/ZhiFuBaoIndexView.java)
-    
+
+demo1截图
+
 ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/refresh.gif)        ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/4.gif)
 
-- demo2 实现了HeaderRefresh在使用appbar的情景
+2. demo2 实现了HeaderRefresh在使用appbar的情景
 
 参见项目中的[AppBarDemoView](https://github.com/gu0-kim/HeaderRefresh/blob/master/app/src/main/java/com/example/developergu/refreshmaster/mvp/view/indexpage/appbar/AppBarDemoView.java)
 
 ![image](https://github.com/gu0-kim/HeaderRefresh/blob/master/art/appbar_refresh.gif)
 
-## 项目说明
+## 关于HeaderRefresh
 
 
 - 用recyclerView实现的带customHeader的刷新组件。刷新的部分出现在customHeader下面。
